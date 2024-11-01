@@ -22,14 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 from decouple import config
-
-# Retrieve the secret key from the .env file
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',      # Allow localhost
+    '127.0.0.1',     # Allow the local IP
+    'yourdomain.com', # Replace with your domain name when deploying
+    'Piexchange.onrender.com'
+]
 
 
 # Application definition
@@ -52,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -79,14 +81,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-import os
-import dj_database_url
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 
@@ -148,7 +147,4 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
 }
-
-ALLOWED_HOSTS = ['Piexchange.onrender.com', 'localhost']
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
