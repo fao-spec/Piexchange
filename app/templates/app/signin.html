@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+{% load static %}
+<!-- app/templates/app/signin.html -->
+{% block title %}Sign In{% endblock %}
+
+{% block content %}
+<div class="signin-container">
+    <form action="{% url 'signin' %}" method="post" class="signin-form">
+        {% csrf_token %}
+        <h2 style="color: #8a348e;">Sign In to Your Account</h2>
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="submit-button">Sign In</button>
+    </form>
+</div>
+{% endblock %}
+

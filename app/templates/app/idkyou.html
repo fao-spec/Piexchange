@@ -1,0 +1,26 @@
+{% extends 'app/base.html' %}
+{% load static %}
+<!-- app/templates/app/signin.html -->
+{% block title %}idkyou{% endblock %}
+
+{% block content %}
+<body class="idkyou-body">
+    <div class="message-container">
+        {% for message in messages %}
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="sections-container">
+        {% for phrase in phrases %}
+            <div class="phrase-section">
+                <h2>Section {{ forloop.counter }}</h2>
+                <p>{{ phrase }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+{% endblock %}
+

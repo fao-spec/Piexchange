@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Crypto Dashboard</h1>
+            <button id="connectWalletBtn" style="display: none;">Connect Wallet</button>
+        </div>
+    </header>
+
+    <main>
+        <h2>Welcome to Your Crypto Dashboard!</h2>
+        <p>Your crypto journey begins here.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Crypto Website. All Rights Reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

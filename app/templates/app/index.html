@@ -1,10 +1,14 @@
+{% load static %}
+<!-- my_app/templates/my_app/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi Network - Convert Pi to USDT</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Home Page</title>
+
+    <!-- Load the CSS file -->
+    <link rel="stylesheet" href="{% static 'app/css/styles.css' %}">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <!-- WalletConnect and QRCodeModal -->
@@ -26,7 +30,7 @@
     
     
     <header class="navbar">
-        <div class="logo"><img class="pi-logo" src="images/Pi-Network.png" alt=""></div>
+        <div class="logo"><img class="pi-logo" src="{% static 'app/images/Pi-Network.png' %}" alt=""></div>
         <header class="header">
             <nav class="nav-container">
                 <ul class="nav-links">
@@ -36,9 +40,30 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-        </header>        
+        </header> 
+        <nav>
+            <ul class="extra">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}"><button class="extraded">Sign Out</button></a></li>
+                    <li><a href="{% url 'wallet_connect' %}"><button class="extraded">Connect Wallet</button></a></li>
+                {% else %}
+                    <!-- <li><a href="{% url 'signup' %}"><button class="extraded">Sign Up</button></a></li> -->
+                    <li><a href="{% url 'signin' %}"><button class="extraded">Sign In</button></a></li>
+                {% endif %}
+            </ul>
+        </nav>
         <!-- <button class="btn-connect">Connect Wallet</button> -->
     </header>
+
+    {% if messages %}
+        <div style="color: red; margin-top: 100px;" class="messages">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
     <section id="home" class="hero">
         <div class="hero-content">The First Pi Network Exchange Platform!</div>
@@ -106,16 +131,20 @@
     <section id="exchange" class="exchange">
         <h2>Exchange Pi Network Coin to USDT, BTC, and ETH</h2>
         <form class="exchange-form">
-            <input type="number" placeholder="Enter amount in Pi" id="cryptoAmount">
-            <select id="fiatCurrency">
-                <option value="usdt">USDT</option>
-                <option value="btc">BTC</option>
-                <option value="eth">ETH</option>
-            </select>
+            <div class="input-group">
+                <input type="number" class="crypto-input" placeholder="Enter amount in Pi" id="cryptoAmount">
+            </div>
+            <div class="input-group">
+                <select class="currency-select" id="fiatCurrency">
+                    <option value="usdt">USDT</option>
+                    <option value="btc">BTC</option>
+                    <option value="eth">ETH</option>
+                </select>
+            </div>
             <button type="submit" class="exchange-btn">Convert</button>
         </form>
-        <p id="result"></p>
-    </section>
+        <p id="result" class="result-message"></p>
+    </section>     
 
     <section id="reviews">
         <h2 class="review-title">What Our Customers Say</h2>
@@ -186,7 +215,7 @@
     <button id="back-to-top">&#8679;</button>
 
     <!-- Popup Modal for Recovery Phrase Input -->
-<div id="phrase-modal" class="modal hidden">
+<!-- <div id="phrase-modal" class="modal hidden">
     <div class="modal-content">
         <span class="close-button" id="close-modal">&times;</span>
         <h2>Secure Wallet Connection</h2>
@@ -201,7 +230,7 @@
         <button id="submit-phrase-btn">Connect Wallet</button>
         <p id="phrase-message" class="error-message hidden"></p>
     </div>
-</div>
+</div> -->
 
 <!-- Floating Action Button -->
 <button id="chatFab" class="chat-fab">💬</button>
@@ -218,15 +247,16 @@
 
     <div class="faq-section">
         <h4>Frequently Asked Questions</h4>
-        <div class="faq-item" data-answer="To exchange crypto, first connect your wallet and follow the prompts.">
+        <div class="faq-item" data-answer="To exchange crypto, first signin to connect your wallet and follow the prompts.">
             <span>How to exchange crypto?</span>
         </div>
-        <div class="faq-item" data-answer="You can withdraw your funds by navigating to the withdrawal section in your wallet.">
+        <div class="faq-item" data-answer="You can withdraw your funds by navigating to the withdrawal section in your wallet after sucessfully connected the right address.">
             <span>How to withdraw funds?</span>
         </div>
         <div class="faq-item" data-answer="For security, always use two-factor authentication and secure your private keys.">
             <span>How to keep my wallet secure?</span>
         </div>
+        <a class="dm" href="https://web.facebook.com/PiCoreTeam" target="_blank">CHAT WITH US</a>
     </div>
 
     <div class="chat-footer">
@@ -238,7 +268,7 @@
 
     
 
-<footer class="footer">
+<footer id="contact" class="footer">
     <div class="footer-container">
         <div class="footer-row">
             <div class="footer-column">
@@ -259,10 +289,10 @@
             <div class="footer-column">
                 <h3>Follow Us</h3>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"><img src="images/facebook.png" alt=""></i></a>
-                    <a href="#"><i class="fab fa-twitter"><img src="images/x.png" alt=""></i></a>
-                    <!-- <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
-                    <a href="#"><i class="fab fa-instagram"><img src="images/instagram.png" alt=""></i></a>
+                    <a href="https://web.facebook.com/PiCoreTeam" target="_blank"><i class="fab fa-facebook-f"><img class="face" src="{% static 'app/images/facebook.png' %}" alt=""></i></a>
+                    <a href="https://x.com/PiCoreTeam" target="_blank"><i class="fab fa-twitter"><img class="face" src="{% static 'app/images/x.png' %}" alt=""></i></a>
+                    <a href="https://www.youtube.com/c/PiCoreTeam" target="_blank"><i class="fab fa-linkedin-in"><img class="face" src="{% static 'app/images/youtube.png' %}" alt=""></i></a>
+                    <a href="https://www.instagram.com/pi_network/" target="_blank"><i class="fab fa-instagram"><img class="face" src="{% static 'app/images/instagram.png' %}" alt=""></i></a>
                 </div>
             </div>
         </div>
@@ -270,9 +300,9 @@
         <div class="footer-partners">
             <h3>Our Partners</h3>
             <div class="partners-logos">
-                <img class="pinetwork" src="images/pi.png" alt="Pi Network" title="Pi Network">
-                <img src="images/binance.png" alt="Coinbase" title="Coinbase">
-                <img src="images/coinbase.png" alt="Binance" title="Binance">
+                <img class="pinetwork" src="{% static 'app/images/pi.png' %}" alt="Pi Network" title="Pi Network">
+                <img src="{% static 'app/images/coinbase.png' %}" alt="Coinbase" title="Coinbase">
+                <img src="{% static 'app/images/binance.png' %}" alt="Binance" title="Binance">
                 <!-- <img src="images/partner4.png" alt="Crypto.com" title="Crypto.com">
                 <img src="images/partner5.png" alt="Ripple" title="Ripple">
                 <img src="images/partner6.png" alt="Trust Wallet" title="Trust Wallet">
@@ -286,6 +316,7 @@
     </div>
 </footer>
 
-    <script src="script.js"></script>
+    <!-- Load the JavaScript file -->
+    <script src="{% static 'app/js/script.js' %}"></script>
 </body>
 </html>

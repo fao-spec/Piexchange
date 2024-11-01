@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/css/styles.css' %}"> <!-- Your CSS file -->
+    <script src="{% static 'app/js/script.js' %}">
+        setTimeout(() => {
+            const messages = document.querySelector('.messages');
+            if (messages) {
+                messages.style.display = 'none';
+            }
+        }, 5000);  // Hide after 5 seconds
+    </script> <!-- Your JavaScript file -->
+    <title>{% block title %}Your Website Title{% endblock %}</title>
+</head>
+<body>
+    <header class="navbar">
+        <a href="{% url 'index' %}"><div class="logo"><img class="pi-logo" src="{% static 'app/images/Pi-Network.png' %}" alt=""></div></a>
+            <!-- <nav class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#exchange">Exchange</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav> -->
+        <nav>
+            <ul class="extra">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}"><button class="extraded">Sign Out</button></a></li>
+                    <li><a href="{% url 'wallet_connect' %}"><button  class="extraded">Connect Wallet</button></a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}"><button class="extraded">Sign Up</button></a></li>
+                    <li><a href="{% url 'signin' %}"><button class="extraded">Sign In</button></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    {% if messages %}
+        <div style="color: red; margin-top: 100px;" class="messages">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p style="color: white;">&copy; {{ year }} Pi Network Exchange</p>
+    </footer>
+
+</body>
+</html>

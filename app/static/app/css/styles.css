@@ -1,3 +1,5 @@
+/* my_app/static/my_app/css/styles.css */
+
 /* Remove default margins and padding from all elements
 * {
     margin: 0;
@@ -132,7 +134,7 @@ img{
     display: grid;
     align-items: center;
     grid-template-columns: auto 1fr;
-    gap: 15px;
+    /* gap: 15px; */
     color: white;
 }
 
@@ -200,7 +202,7 @@ img{
 .hero-content{
     font-size: 65px;
     width: 90%;
-    margin-top: 20vh;
+    margin-top: 10vh;
     margin-bottom: 30px;
     font-weight: bolder;
     text-align: left;
@@ -325,39 +327,100 @@ h3{
 }
 
 
-/* Exchange Form */
+/* Exchange Section Styling */
 .exchange {
-    padding: 50px 10px;
-    background-color: #0d1117;
-    color: white;
+    /* background: #2e2e2e; */
+    padding: 50px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
     text-align: center;
+    margin: 20px 0;
+    color: white;
+    position: relative;
 }
 
-h2{
+.exchange h2 {
+    font-size: 2.5rem;
     margin-bottom: 20px;
-    font-size: 2.4rem;
+    font-weight: bold;
+    animation: slideIn 0.5s ease forwards;
 }
 
-.exchange-form input, .exchange-form select {
-    margin: 10px;
-    padding: 10px;
-    width: 40%;
-    border-radius: 5px;
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.exchange-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-group {
+    width: 100%;
+    max-width: 400px;
+}
+
+.crypto-input,
+.currency-select {
+    width: 100%;
+    padding: 15px 20px;
     border: none;
+    border-radius: 10px;
+    background-color: #3a3a3a;
+    color: #fff;
+    font-size: 1rem;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.crypto-input:focus,
+.currency-select:focus {
+    background-color: #4b4b4b;
+    box-shadow: 0 0 10px rgba(75, 255, 75, 0.5);
+    outline: none;
 }
 
 .exchange-btn {
-    padding: 10px 20px;
-    background-color: #FFD700;
+    background-color: #28a745;
+    color: white;
+    padding: 15px 30px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .exchange-btn:hover {
-    background-color: #FFC300;
+    background-color: #218838;
+    transform: translateY(-3px);
 }
+
+.result-message {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #4caf50;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 /* Reviews Section */
 #reviews {
@@ -490,6 +553,7 @@ h2{
     border: none;
     width: 65px;
     height: 65px;
+    z-index: 100;
     /* padding: 15px; */
     font-size: 1.5rem;
     border-radius: 50%;
@@ -889,6 +953,21 @@ textarea {
     color: #f0b90b;
 }
 
+.dm {
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: gold;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.dm:hover {
+    background-color: #404040;
+    color: #f0b90b;
+}
+
 .chat-messages {
     flex: 1;
     overflow-y: auto;
@@ -983,7 +1062,6 @@ textarea {
 
 .social-links a {
     color: white;
-    font-size: 1.2rem;
     margin: 0 10px;
     display: inline-block;
     transition: transform 0.3s ease, color 0.3s;
@@ -992,6 +1070,10 @@ textarea {
 .social-links a:hover {
     color: #4caf50;
     transform: scale(1.2);
+}
+
+.face {
+    width: 50px;
 }
 
 /* Partner Logos */
@@ -1096,7 +1178,35 @@ textarea {
         justify-items: center;
         gap: 10px;
     }
+    .logo{
+        width: 40%;
+        /* background-color: #007BFF; */
+    }
+    .pi-logo{
+        width: 100%;
+    }
+    .header{
+        width: 40%;
+        padding: 0px;
+        /* background-color: #198754; */
+    }
+    /* .extra{
+        width: 30%;
+        background-color: red;
+    } */
+    .extraded {
+        width: 100%;
+        margin-right: 0px;
+    }
 }
+
+
+
+
+
+
+
+
 
 /* Responsive Grid Layout */
 @media (max-width: 992px) {
@@ -1123,3 +1233,515 @@ textarea {
     }
 }
 
+/* app/static/app/style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e0a27;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    margin-top: 120px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+h2 {
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #007BFF;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFD700;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #FFD300;
+}
+
+/* app/static/app/style.css */
+/* Add this section for sign-in styling */
+
+.signin-container {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 50vh;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in;
+}
+
+.signin-form h2 {
+    text-align: center;
+}
+
+.extra{
+    /* display: flex; */
+    align-items: center;
+}
+
+.extraded {
+    /* padding: 10px 20px; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #FFD700;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 5px;
+    width: 80px;
+}
+
+.extraded:hover {
+    background-color: #FFC300;
+}
+
+.alert {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.alert.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.alert.error {
+    background-color: #f44336;
+    color: white;
+}
+
+.messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    z-index: 1000;
+    animation: fadeOut 5s forwards;  /* Automatically fades out after 5s */
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+
+
+/* Container for the entire form */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1e0a27;
+    padding: 20px;
+}
+
+/* Wallet connect box */
+.connect-box {
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+/* Title and description */
+.connect-box h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.connect-box p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+}
+
+/* Form grid for 24 input fields */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Input fields */
+.grid input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.grid input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Submit button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: gold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: gold;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .connect-box {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* styles.css */
+
+/* Container for the form */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+form {
+    max-width: 600px; /* Set a max width for the form */
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Fields */
+.input-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between; /* Space out input groups */
+}
+
+.input-group {
+    flex: 1 1 22%; /* 4 inputs per row with some margin */
+    margin: 5px; /* Add some margin around each input group */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"] {
+    width: 100%; /* Full width of the parent container */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Submit Button */
+/* body {
+    background-color: #0d1117;
+    color: #f0f6fc;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+} */
+
+.section {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #161b22;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section h2 {
+    margin-bottom: 10px;
+}
+
+.word-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.word {
+    background-color: #0d1117;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* body {
+    background-color: #0d1117;
+    color: #f0f6fc;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+} */
+
+/* form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+} */
+
+
+
+/* styles.css */
+
+/* Body Styles */
+.unique-wallet-connect-body,
+.unique-idkyou-body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container Styles */
+.unique-container,
+.unique-idkyou-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    margin-left: 7%;
+}
+
+/* Title Styles */
+.unique-title,
+.unique-idkyou-title {
+    text-align: center;
+    color: #8a348e;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.unique-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Container Styles */
+.unique-input-container {
+    margin-bottom: 15px;
+}
+
+/* Textarea Styles */
+.unique-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none; /* Disable resizing */
+}
+
+/* Button Styles */
+.unique-submit-button {
+    padding: 10px;
+    background-color: #FFD700;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.unique-submit-button:hover {
+    background-color: #FFD300;
+}
+
+/* Error Message Styles */
+.unique-error-message {
+    color: red;
+    text-align: center;
+}
+
+/* Phrase Display Styles */
+.unique-phrase-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.unique-phrase-word {
+    background-color: #e7f1ff;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+/* No Phrase Message Styles */
+.unique-no-phrase {
+    text-align: center;
+    color: #666;
+}
+
+.idkyou-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* background-color: #f8f9fa; */
+}
+
+.message-container {
+    margin: 20px;
+}
+
+.message {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+
+.error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+}
+
+.sections-container {
+    width: 80%; /* Adjust as needed */
+}
+
+.phrase-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.phrase-section h2 {
+    margin-top: 0;
+}
